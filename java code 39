@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            return null;// এখানে নির্দিষ্ট আইটেমের লেআউট সেটআপ করতে হবে।
+            return null;// এখানে নির্দিষ্ট আইটেমের লেআউট সেটআপ করতে হবে।নতুন যে xml layout টা নিলাম সেটাকে inflate করে এটার ভিতর রাখবো ।
         }
         //এইবার উপরের 2.234 দেখো
 
