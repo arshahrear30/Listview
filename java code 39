@@ -1,0 +1,87 @@
+package com.example.listviewapp;
+
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ListView;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class MainActivity extends AppCompatActivity {
+    //extends ar modde onek bundle thake . jemon : on create on resom etc .
+    ListView mylistview;
+
+    //➡ সহজ ভাষায়, একটি স্ক্রলযোগ্য তালিকা (list) তৈরি করতে ListView ব্যবহার করা হয়।
+    //➡ যেমন: কনটাক্ট লিস্ট,music app, ম্যাসেজ লিস্ট, অ্যাপের সেটিংস মেনু ,Call Logs (কল হিস্টোরি),
+    // WhatsApp Chat List (চ্যাট লিস্ট),Settings Menu (অ্যাপের সেটিংস অপশন),E-commerce App (পণ্য তালিকা যেমন Daraz, Amazon)
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_main);
+        mylistview = findViewById(R.id.listview);
+
+
+//....................................................
+        //নিচের দুইলাইন পরে দেখবা এটা 2.234 ।
+
+        Myadapter myadapter=new Myadapter();
+        mylistview.setAdapter(myadapter);
+
+
+
+        //mylistview হলো ListView-এর একটি অবজেক্ট ।
+        // Myadapter হল আমাদের কাস্টম অ্যাডাপ্টার, যা ListView-তে ডাটা দেখানোর কাজ করবে।
+        //setAdapter(myadapter) দিয়ে আমরা ListView-এর জন্য এই অ্যাডাপ্টার সেট করে দিলাম।
+//.........................
+        //ListView হলো একটি তালিকা দেখানোর জন্য Android UI কম্পোনেন্ট।
+        //➡ ListView সাধারণত Adapter ব্যবহার করে ডাটা লোড করে।
+        //➡ Adapter হলো ListView এবং ডাটার মধ্যে সংযোগকারী ব্রিজ।
+        //➡ BaseAdapter, ArrayAdapter, বা RecyclerView.Adapter ব্যবহার করে আমরা ListView-এ কাস্টম আইটেম ডিজাইন করতে পারি।
+        //বড় ডাটার ক্ষেত্রে RecyclerView ব্যবহার করাই ভালো।
+        //ListView শুধুমাত্র দৃশ্যমান আইটেমগুলোর জন্য মেমোরি ব্যবহার করে, ফলে অ্যাপ দ্রুত কাজ করে।
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+    }
+//===============================================================================
+    //adapter create
+    private  class Myadapter extends BaseAdapter {
+        // BaseAdapter লেখার পর লাল বাল্ব আসবে। তখন সেটাতে ক্লিক করবো।
+        // "Implement Methods" এ ক্লিক করবো, তারপর OK চাপবো।
+        @Override
+        public int getCount() {
+            return 0; // মোট কতগুলো আইটেম থাকবে, তা রিটার্ন করবে।
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null; // নির্দিষ্ট কোনো পজিশনের আইটেম রিটার্ন করবে।
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;// নির্দিষ্ট পজিশনের আইটেমের আইডি রিটার্ন করবে।
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            return null;// এখানে নির্দিষ্ট আইটেমের লেআউট সেটআপ করতে হবে।
+        }
+        //এইবার উপরের 2.234 দেখো
+
+    }
+
+//===============================================================
+
+
+}
